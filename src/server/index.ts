@@ -4,8 +4,10 @@ import fs from "fs"
 import path from "path"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
-import { StaticRouter } from "react-router-dom/server"
-import { App } from "../client/pages/app"
+import { 
+    StaticRouter,
+} from "react-router-dom/server"
+import { Router } from "../app/router"
 
 const server = express()
 
@@ -28,7 +30,14 @@ const assets = JSON.parse(manifest)
 
 server.get("*", (req, res) => {
     // res.send("HELLO FROM SERVER")
-    const component = ReactDOMServer.renderToString(React.createElement(StaticRouter,{ location: req.url },React.createElement(App)))
+    const component = ReactDOMServer.renderToString(
+        React.createElement(
+            StaticRouter,
+            { location: req.url },
+            React.createElement(
+                Router
+            ))
+    )
     res.render("client", { assets, component})
 })
 

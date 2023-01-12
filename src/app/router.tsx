@@ -5,7 +5,7 @@ import {
     Link
 } from "react-router-dom"
 
-export const App: React.FC = () => {
+export const Router: React.FC = () => {
     return (
         <Routes>
             <Route path="/" element={<div>HOME<br/><Link to="/hi">Go to HI! page</Link></div>} />
