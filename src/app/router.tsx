@@ -1,29 +1,16 @@
 import React from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+
+import { Home } from './pages/home'
+import { Hi } from './pages/hi'
+import { NotFoundPage } from './pages/errorPage'
 
 export const Router: React.FC = () => {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <div>
-            HOME
-            <br />
-            <Link to="/hi">Go to HI! page</Link>
-          </div>
-        }
-      />
-      <Route
-        path="/hi"
-        element={
-          <div>
-            HI!
-            <br />
-            <Link to="/">Go to Home page</Link>
-          </div>
-        }
-      />
+      <Route path="*" element={<NotFoundPage />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/hi" element={<Hi />} />
     </Routes>
   )
 }
